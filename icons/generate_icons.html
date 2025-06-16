@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generate Smart Pause Icons</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    canvas {
+      border: 1px solid #ccc;
+      margin: 10px;
+    }
+    .instructions {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Smart Pause Icon Generator</h1>
+  
+  <div class="instructions">
+    <p>This page generates simple icons for the Smart Pause extension. Right-click each icon and select "Save Image As" to save them as PNG files with the appropriate names (icon16.png, icon48.png, icon128.png).</p>
+  </div>
+  
+  <div>
+    <canvas id="icon16" width="16" height="16"></canvas>
+    <canvas id="icon48" width="48" height="48"></canvas>
+    <canvas id="icon128" width="128" height="128"></canvas>
+  </div>
+  
+  <script>
+    // Function to draw the Smart Pause icon
+    function drawIcon(canvas, size) {
+      const ctx = canvas.getContext('2d');
+      
+      // Background circle
+      ctx.fillStyle = '#4285f4'; // Google blue
+      ctx.beginPath();
+      ctx.arc(size/2, size/2, size/2, 0, Math.PI * 2);
+      ctx.fill();
+      
+      // Pause symbol
+      ctx.fillStyle = 'white';
+      const barWidth = size * 0.15;
+      const barHeight = size * 0.4;
+      const spacing = size * 0.1;
+      
+      // Left bar
+      ctx.fillRect(
+        (size/2) - barWidth - (spacing/2),
+        (size/2) - (barHeight/2),
+        barWidth,
+        barHeight
+      );
+      
+      // Right bar
+      ctx.fillRect(
+        (size/2) + (spacing/2),
+        (size/2) - (barHeight/2),
+        barWidth,
+        barHeight
+      );
+    }
+    
+    // Draw icons of different sizes
+    drawIcon(document.getElementById('icon16'), 16);
+    drawIcon(document.getElementById('icon48'), 48);
+    drawIcon(document.getElementById('icon128'), 128);
+  </script>
+</body>
+</html>

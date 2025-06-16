@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Pause Settings</title>
+  <style>
+    body {
+      width: 250px;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+    }
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #4285f4;
+    }
+    .setting {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+      margin-right: 10px;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 20px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #4285f4;
+    }
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+    .footer {
+      margin-top: 15px;
+      font-size: 12px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="title">Smart Pause Settings</div>
+  
+  <div class="setting">
+    <label class="switch">
+      <input type="checkbox" id="autoResume" checked>
+      <span class="slider"></span>
+    </label>
+    <span>Auto-resume media when returning to tab</span>
+  </div>
+  
+  <div style="margin-top: 10px; font-size: 12px; color: #666;">
+    <p>Media will <strong>automatically resume</strong> when returning to a tab where it was previously playing.</p>
+    <p>When multiple YouTube tabs are open, only the active tab will play video.</p>
+    <p>Enhanced YouTube support ensures videos resume properly when returning to a tab.</p>
+  </div>
+  
+  <div class="footer">
+    Smart Pause v1.0 - Automatically pauses media when switching tabs
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
